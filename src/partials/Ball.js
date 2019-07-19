@@ -39,13 +39,59 @@ export default class Ball {
     }
 
     }
-    render(svg) {
+     // paddle collision
+     paddleCollision(player1, player2) {
+        // moving right
+
+        // console.log("player1", player1);
+        // console.log("player2", player2);
+
+        if (this.vx > 0) {
+          // collision detection for right paddle
+          if(this.x + this.radius >= player2.x && // right edge of the ball is >= left edge of the paddle
+            this.x + this.radius <= player2.x + player2.width && // right edge of the ball is <= right edge of the paddle
+            (this.y >= player2.y && this.y <= player2.y + player2.height) // ball Y is >= paddle top Y and <= paddle bottom Y
+            ){
+              // if true then there's a collision  
+              this.vx *= -1;
+              console.log(1);
+              //player.height -=5;
+              // -- decreasing the height
+              let playerColour = player2.colour;
+              player2.colour ='pink';
+              setTimeout(function(){ //
+                //---vhanging the colour
+                player2.colour = playerColour // reset the color
+              },200);
+          }
+        } else {
+            // moving left
+          if(this.x - this.radius <= player1.x + player1.width &&
+             this.x - this.radius >= player1.x &&
+             (this.y >= player1.y && this.y <= player1.y + player1.height)
+            ){
+            this.vx *= -1;
+            console.log(2);
+
+            let playerColour = player1.colour;
+            player1.colour ='orange';
+            setTimeout(function(){ //
+              //---vhanging the colour
+              player1.colour = playerColour // reset the color
+            },200);
+          }
+        }
+      }
+    render(svg, player1, player2) {
         // vector addition for movement
         this.x += this.vx;
         this.y += this.vy;
 
         // call collion method
         this.wallCollision();
+        // call paddle collision method
+        this.paddleCollision(player1,player2);
+
         //create ball elements
         let circle = document.createElementNS(SVG_NS, 'circle');
 
