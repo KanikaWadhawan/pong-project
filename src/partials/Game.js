@@ -16,6 +16,7 @@ export default class Game {
     this.board = new Board(this.width, this.height);
 
     this.ball = new Ball(8, this.width, this.height, 'magenta');
+    //this.ball1 = new Ball(6, this.width, this.height, 'orange'); if you want to add a 2nd ball
 
     this.paddleWidth = 8;
     this.paddleHeight = 56;
@@ -63,6 +64,7 @@ export default class Game {
     this.player1.render(svg);
     this.player2.render(svg);
     this.ball.render(svg);
+    //this.ball1.render(svg);
 
   }
 }
