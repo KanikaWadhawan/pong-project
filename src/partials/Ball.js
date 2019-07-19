@@ -20,9 +20,9 @@ export default class Ball {
         this.vy = Math.floor(Math.random() * 10 - 5);
     }
        // this.vy = Math.floor(Math.random() * 10 - 5);
-        console.log("vy",this.vy);
+        //console.log("vy",this.vy);
         this.vx = this.direction * (6 - Math.abs(this.vy));
-        console.log( "vx",this.vx);
+        //console.log( "vx",this.vx);
     }
    // collision of the ball with the walls of the board
     wallCollision(){
@@ -54,7 +54,7 @@ export default class Ball {
             ){
               // if true then there's a collision  
               this.vx *= -1;
-              console.log(1);
+              //console.log(1);
               //player.height -=5;
               // -- decreasing the height
               let playerColour = player2.colour;
@@ -71,7 +71,7 @@ export default class Ball {
              (this.y >= player1.y && this.y <= player1.y + player1.height)
             ){
             this.vx *= -1;
-            console.log(2);
+            //console.log(2);
 
             let playerColour = player1.colour;
             player1.colour ='orange';
@@ -81,6 +81,15 @@ export default class Ball {
             },200);
           }
         }
+      }
+  
+      //keeping track of score
+      goal(player){
+      
+        player.score++;
+        this.reset();
+       // console.log(player);
+
       }
     render(svg, player1, player2) {
         // vector addition for movement
@@ -99,8 +108,18 @@ export default class Ball {
         circle.setAttributeNS(null, 'cx', this.x);
         circle.setAttributeNS(null, 'cy', this.y);
         circle.setAttributeNS(null, 'fill', this.colour);
-
-
         svg.appendChild(circle);
+        
+        const rightGoal = this.x + this.radius >= this.boardWidth;
+        const leftGoal = this.x - this.radius <=0;
+
+        if(rightGoal){
+            this.goal(player1);
+            this.direction = 1;
+        } else if(leftGoal){
+            this.goal(player2);
+            this.direction = -1;
+        }
+
     }
 }
