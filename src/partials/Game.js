@@ -43,15 +43,29 @@ export default class Game {
       KEYS.up,
       KEYS.down
     );
-
-
+    
+    // adding action listener for pause with the space bar
+    document.addEventListener('keydown', (event) => {
+     switch(event.key){
+        case KEYS.spaceBar:
+          this.pause =!this.pause;
+          break;
+     }
+    }
+    );
 
 
     //  this.paddleOne = new Paddle( this.height, 8, 56, 10, this.height / 2 - 28, 'red');
     // this.paddleTwo = new Paddle( this.height, 8, 56, this.width - 18, this.height / 2 - 28);
+
   } // end of constructor
 
   render() {
+   
+    // adding the pause to render method
+    if(this.pause){
+      return;
+    }
     // More code goes here....
     this.gameElement.innerHTML = ""; // clear the HTML before appending to fix a render bug 
     let svg = document.createElementNS(SVG_NS, "svg");
