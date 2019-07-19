@@ -1,4 +1,5 @@
 import { SVG_NS } from "../settings";
+import pingSound from "../../public/sounds/pong-01.wav";
 export default class Ball {
     constructor(radius, boardWidth, boardHeight, colour = 'white') {
         this.radius = radius;
@@ -6,6 +7,8 @@ export default class Ball {
         this.boardHeight = boardHeight;
         this.direction = 1;
         this.colour = colour;
+
+        this.ping = new Audio(pingSound);
 
         this.reset();
     }
@@ -35,6 +38,7 @@ export default class Ball {
         this.vx = -this.vx;
     } else if(hitTop || hitBottom){
         this.vy = -this.vy;
+        
        // or  this.vy *= -1;
     }
 
@@ -54,6 +58,7 @@ export default class Ball {
             ){
               // if true then there's a collision  
               this.vx *= -1;
+              this.ping.play();
               //console.log(1);
               //player.height -=5;
               // -- decreasing the height
@@ -72,7 +77,7 @@ export default class Ball {
             ){
             this.vx *= -1;
             //console.log(2);
-
+            this.ping.play();
             let playerColour = player1.colour;
             player1.colour ='orange';
             setTimeout(function(){ //

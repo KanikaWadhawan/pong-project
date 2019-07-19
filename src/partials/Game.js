@@ -17,10 +17,10 @@ export default class Game {
 
     this.ball = new Ball(8, this.width, this.height, 'magenta');
     //this.ball1 = new Ball(6, this.width, this.height, 'orange'); if you want to add a 2nd ball
-    
-    this.score1 = new Score(this.width/2 - 50, 30, 30);
-    
-    this.score2 = new Score(this.width/2 + 25, 30, 30);
+
+    this.score1 = new Score(this.width / 2 - 50, 30, 30);
+
+    this.score2 = new Score(this.width / 2 + 25, 30, 30);
 
     this.paddleWidth = 8;
     this.paddleHeight = 56;
@@ -47,14 +47,14 @@ export default class Game {
       KEYS.up,
       KEYS.down
     );
-    
+
     // adding action listener for pause with the space bar
     document.addEventListener('keydown', (event) => {
-     switch(event.key){
+      switch (event.key) {
         case KEYS.spaceBar:
-          this.pause =!this.pause;
+          this.pause = !this.pause;
           break;
-     }
+      }
     }
     );
 
@@ -65,9 +65,9 @@ export default class Game {
   } // end of constructor
 
   render() {
-   
+
     // adding the pause to render method
-    if(this.pause){
+    if (this.pause) {
       return;
     }
     // More code goes here....
@@ -83,9 +83,9 @@ export default class Game {
     this.player2.render(svg);
     this.ball.render(svg, this.player1, this.player2);
     //this.ball1.render(svg);
-    
+
     this.score1.render(svg, this.player1.score);
     this.score2.render(svg, this.player2.score);
-    
+
   }
 }
