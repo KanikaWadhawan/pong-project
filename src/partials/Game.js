@@ -3,7 +3,7 @@ import Score from './Score';
 import Board from './Board';
 import Ball from './Ball';
 
-import pingSound1 from "../../public/sounds/game_of_thrones.mp3";
+//import pingSound1 from "../../public/sounds/game_of_thrones.mp3";
 import { SVG_NS, KEYS, PaddleOptions } from "../settings";
 
 
@@ -27,8 +27,8 @@ export default class Game {
     this.paddleHeight = 56;
     this.boardGap = 10;
     
-    this.ping1 = new Audio(pingSound1);
-    this.ping1.play();
+    //this.ping1 = new Audio(pingSound1);
+    //this.ping1.play();
    
     
 
@@ -37,8 +37,10 @@ export default class Game {
 
     this.player1 = new Paddle(
       this.height,
-      PaddleOptions.paddleWidth,
-      PaddleOptions.paddleHeight,
+      18,
+      70,
+     // PaddleOptions.paddleWidth,
+     // PaddleOptions.paddleHeight,
       PaddleOptions.boardGap,
       ((this.height - PaddleOptions.paddleHeight) / 2),
       '#00ff99',
@@ -46,10 +48,13 @@ export default class Game {
       KEYS.z
     );
 
+
     this.player2 = new Paddle(
       this.height, //board height
-      PaddleOptions.paddleWidth,
-      PaddleOptions.paddleHeight,
+      18,
+      70,
+      //PaddleOptions.paddleWidth,
+      //PaddleOptions.paddleHeight,
       this.width - (PaddleOptions.boardGap + PaddleOptions.paddleWidth),
       ((this.height - PaddleOptions.paddleHeight) / 2),
       'blue',
@@ -87,11 +92,7 @@ export default class Game {
 
   } // end of constructor
 
-  // enableLoop() { 
-  //   this.ping1.loop = true;
-  //   this.ping1.load();
-  // } 
-
+  
   spawnMegaBall() {
     this.megaBall = true;
     for (let i = 0; i <= 70; i++) {
