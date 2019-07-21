@@ -2,8 +2,9 @@ import Paddle from './Paddle';
 import Score from './Score';
 import Board from './Board';
 import Ball from './Ball';
+//import Winner from './Winner';
 
-//import pingSound1 from "../../public/sounds/game_of_thrones.mp3";
+import pingSound1 from "../../public/sounds/game_of_thrones.mp3";
 import { SVG_NS, KEYS, PaddleOptions } from "../settings";
 
 
@@ -26,9 +27,12 @@ export default class Game {
     this.paddleWidth = 8;
     this.paddleHeight = 56;
     this.boardGap = 10;
-    
-    //this.ping1 = new Audio(pingSound1);
-    //this.ping1.play();
+   
+    //this.winner = new Message(90, 150, 40);
+    // adding sound in the background
+    this.ping1 = new Audio(pingSound1);
+    this.ping1.play();
+    this.ping1.loop = true;
    
     
 
@@ -129,6 +133,24 @@ export default class Game {
         ball.render(svg, this.player1, this.player2);
       })
     }
+
+    // if(this.player1.score === 10 || this.player2.score === 10){
+    //   this.pause = true;
+    		// Declare Winner
+				var player1Msg = 'Player 1 Wins!';
+				var player2Msg = 'Player 2 Wins!';
+				if (this.player1.score === 10) {
+					this.winner.render(svg, player1Msg);
+				} else if (this.player2.score === 10) {
+					this.winner.render(svg, player2Msg);
+				}
+       // document.location.reload();
+
+      // declare winner here, try to do something other than an alert e.g. appending to the DOM
+      //alert("YOU WIN, CONGRATULATIONS!");
+      // also try to reset the game
+     
+    
 
   }
 }
