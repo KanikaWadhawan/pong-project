@@ -12,7 +12,7 @@ export default class Score {
         text.setAttributeNS(null,'y', this.y);
         text.setAttributeNS(null,'font-family', '"Silkscreen Web" , monotype');
         text.setAttributeNS(null,'font-size', this.size);
-        text.setAttributeNS(null,'fill', 'yellow');
+        text.setAttributeNS(null,'fill', 'red');
         text.textContent = score;
 
 

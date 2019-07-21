@@ -3,6 +3,7 @@ import Score from './Score';
 import Board from './Board';
 import Ball from './Ball';
 
+import pingSound1 from "../../public/sounds/game_of_thrones.mp3";
 import { SVG_NS, KEYS, PaddleOptions } from "../settings";
 
 
@@ -15,7 +16,7 @@ export default class Game {
     this.gameElement = document.getElementById(this.element);
     this.board = new Board(this.width, this.height);
 
-    this.ball = new Ball(8, this.width, this.height, 'magenta');
+    this.ball = new Ball(8, this.width, this.height, '#ff0066');
     //this.ball1 = new Ball(6, this.width, this.height, 'orange'); if you want to add a 2nd ball
 
     this.score1 = new Score(this.width / 2 - 50, 30, 30);
@@ -25,6 +26,14 @@ export default class Game {
     this.paddleWidth = 8;
     this.paddleHeight = 56;
     this.boardGap = 10;
+    
+    this.ping1 = new Audio(pingSound1);
+    this.ping1.play();
+   
+    
+
+    this.megaBall = false;
+    this.megaBallArray = [];
 
     this.player1 = new Paddle(
       this.height,
@@ -32,7 +41,7 @@ export default class Game {
       PaddleOptions.paddleHeight,
       PaddleOptions.boardGap,
       ((this.height - PaddleOptions.paddleHeight) / 2),
-      'red',
+      '#00ff99',
       KEYS.a,
       KEYS.z
     );
@@ -54,6 +63,20 @@ export default class Game {
         case KEYS.spaceBar:
           this.pause = !this.pause;
           break;
+
+        // case 'm':
+        //     this.spawnMegaBall();
+        //     break;
+
+        case 'm':
+          if (this.megaBall === false) {
+            this.spawnMegaBall();
+          
+          
+          } else {
+            this.megaBall = false;
+          }
+          break;
       }
     }
     );
@@ -63,6 +86,19 @@ export default class Game {
     // this.paddleTwo = new Paddle( this.height, 8, 56, this.width - 18, this.height / 2 - 28);
 
   } // end of constructor
+
+  // enableLoop() { 
+  //   this.ping1.loop = true;
+  //   this.ping1.load();
+  // } 
+
+  spawnMegaBall() {
+    this.megaBall = true;
+    for (let i = 0; i <= 70; i++) {
+      this.megaBallArray[i] = new Ball(10, this.width, this.height);
+    }
+  }
+
 
   render() {
 
@@ -86,6 +122,12 @@ export default class Game {
 
     this.score1.render(svg, this.player1.score);
     this.score2.render(svg, this.player2.score);
+
+    if (this.megaBall) {
+      this.megaBallArray.forEach(ball => {
+        ball.render(svg, this.player1, this.player2);
+      })
+    }
 
   }
 }

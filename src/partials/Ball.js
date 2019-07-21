@@ -1,7 +1,8 @@
 import { SVG_NS } from "../settings";
 import pingSound from "../../public/sounds/pong-01.wav";
+
 export default class Ball {
-    constructor(radius, boardWidth, boardHeight, colour = 'white') {
+    constructor(radius, boardWidth, boardHeight, colour = '#7f7f7f') {
         this.radius = radius;
         this.boardWidth = boardWidth;
         this.boardHeight = boardHeight;
@@ -9,8 +10,10 @@ export default class Ball {
         this.colour = colour;
 
         this.ping = new Audio(pingSound);
+        
 
         this.reset();
+       
     }
     // reseting the ball to the middle
     reset() {
@@ -36,8 +39,10 @@ export default class Ball {
     
     if(hitLeft || hitRight){
         this.vx = -this.vx;
+       // this.ping1.play();
     } else if(hitTop || hitBottom){
         this.vy = -this.vy;
+        //this.ping1.play();
         
        // or  this.vy *= -1;
     }
@@ -60,12 +65,13 @@ export default class Ball {
               this.vx *= -1;
               this.ping.play();
               //console.log(1);
-              //player.height -=5;
-              // -- decreasing the height
+              player2.height +=10;
+              player1.height -=5;
+              // -- decreasing the height of the opponent
               let playerColour = player2.colour;
               player2.colour ='pink';
               setTimeout(function(){ //
-                //---vhanging the colour
+                //---changing the colour
                 player2.colour = playerColour // reset the color
               },200);
           }
@@ -76,26 +82,34 @@ export default class Ball {
              (this.y >= player1.y && this.y <= player1.y + player1.height)
             ){
             this.vx *= -1;
+            player1.height +=10;
+            player2.height -=5;
             //console.log(2);
             this.ping.play();
             let playerColour = player1.colour;
             player1.colour ='orange';
             setTimeout(function(){ //
-              //---vhanging the colour
+              //---changing the colour
               player1.colour = playerColour // reset the color
             },200);
           }
         }
       }
-  
-      //keeping track of score
-      goal(player){
-      
-        player.score++;
-        this.reset();
-       // console.log(player);
+    
 
-      }
+ 
+      //keeping track of score
+      goal(player) {
+        if (player.score <= 10) {
+          player.score++;
+          this.reset();
+          
+    }  if (player.score === 10) {
+       alert("GAME OVER");
+    
+    }   
+     
+    }
     render(svg, player1, player2) {
         // vector addition for movement
         this.x += this.vx;
