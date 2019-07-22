@@ -64,6 +64,18 @@ Read more about the [Parcel web application bundler here](https://parceljs.org/)
    m :Click once more to reset it to a single Ball
 
 
+## FEATURES
+
+* This is a Game of Thrones themed pong game for GoT Fans. 
+* The Paddles changes color when they collide with the ball.
+* The Paddles triggers a sound on collision with the ball.
+* On Collision with the ball, the paddle which collides increases the size and the opponent paddles get decreased.
+* To increase the difficulty level, 'm' key has the option which triggers multiple balls.
+* If the 'm' key is pressed again the multiple balls are reset to one ball.
+* If the Score of any player reaches 10, the player is declayered as the Winner.
+* Background music is played on loop.
+
+
 ## Learnings
 
 ### Object Oriented Programming
