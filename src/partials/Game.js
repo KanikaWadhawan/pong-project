@@ -136,9 +136,7 @@ export default class Game {
       this.pause = true;
       this.winner.render(svg, player2Msg);
     }
-     document.location.reload();
-
-    
+     //document.location.reload();
 
 
 
