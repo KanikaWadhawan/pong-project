@@ -27,14 +27,14 @@ export default class Game {
     this.paddleWidth = 8;
     this.paddleHeight = 56;
     this.boardGap = 10;
-   
+
     this.winner = new Winner(90, 150, 40);
     // adding sound in the background
     this.ping1 = new Audio(pingSound1);
     this.ping1.play();
     this.ping1.loop = true;
-   
-    
+
+
 
     this.megaBall = false;
     this.megaBallArray = [];
@@ -43,8 +43,6 @@ export default class Game {
       this.height,
       18,
       70,
-     // PaddleOptions.paddleWidth,
-     // PaddleOptions.paddleHeight,
       PaddleOptions.boardGap,
       ((this.height - PaddleOptions.paddleHeight) / 2),
       '#00ff99',
@@ -57,8 +55,6 @@ export default class Game {
       this.height, //board height
       18,
       70,
-      //PaddleOptions.paddleWidth,
-      //PaddleOptions.paddleHeight,
       this.width - (PaddleOptions.boardGap + PaddleOptions.paddleWidth),
       ((this.height - PaddleOptions.paddleHeight) / 2),
       'blue',
@@ -73,15 +69,12 @@ export default class Game {
           this.pause = !this.pause;
           break;
 
-        // case 'm':
-        //     this.spawnMegaBall();
-        //     break;
-
+        
         case 'm':
           if (this.megaBall === false) {
             this.spawnMegaBall();
-          
-          
+
+
           } else {
             this.megaBall = false;
           }
@@ -91,12 +84,10 @@ export default class Game {
     );
 
 
-    //  this.paddleOne = new Paddle( this.height, 8, 56, 10, this.height / 2 - 28, 'red');
-    // this.paddleTwo = new Paddle( this.height, 8, 56, this.width - 18, this.height / 2 - 28);
-
+   
   } // end of constructor
 
-  
+
   spawnMegaBall() {
     this.megaBall = true;
     for (let i = 0; i <= 70; i++) {
@@ -111,7 +102,7 @@ export default class Game {
     if (this.pause) {
       return;
     }
-    // More code goes here....
+    
     this.gameElement.innerHTML = ""; // clear the HTML before appending to fix a render bug 
     let svg = document.createElementNS(SVG_NS, "svg");
     svg.setAttributeNS(null, "width", this.width);
@@ -123,7 +114,7 @@ export default class Game {
     this.player1.render(svg);
     this.player2.render(svg);
     this.ball.render(svg, this.player1, this.player2);
-    //this.ball1.render(svg);
+    
 
     this.score1.render(svg, this.player1.score);
     this.score2.render(svg, this.player2.score);
@@ -134,25 +125,22 @@ export default class Game {
       })
     }
 
-    // if(this.player1.score === 10 || this.player2.score === 10){
-    //   this.pause = true;
-    		// Declare Winner
-				const player1Msg = 'Player 1 Wins!';
-				const player2Msg = 'Player 2 Wins!';
-				if (this.player1.score === 10) {
-          this.pause = true;
-					this.winner.render(svg, player1Msg);
-				} else if (this.player2.score === 10) {
-          this.pause = true;
-					this.winner.render(svg, player2Msg);
-				}
-       // document.location.reload();
-
-      // declare winner here, try to do something other than an alert e.g. appending to the DOM
-      //alert("YOU WIN, CONGRATULATIONS!");
-      // also try to reset the game
-     
     
+    // Declare Winner
+    const player1Msg = 'Player 1 Wins!';
+    const player2Msg = 'Player 2 Wins!';
+    if (this.player1.score === 10) {
+      this.pause = true;
+      this.winner.render(svg, player1Msg);
+    } else if (this.player2.score === 10) {
+      this.pause = true;
+      this.winner.render(svg, player2Msg);
+    }
+     document.location.reload();
+
+    
+
+
 
   }
 }
