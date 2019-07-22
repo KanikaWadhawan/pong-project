@@ -4,6 +4,11 @@
 
 ## GAME PREVIEW
 
+![Preview](src/images/Game-of-Pongs.png)
+
+## WINNER DECLARATION
+
+![Preview](src/images/winner.png)
 
 A starter project for a basic pong game using SVGs.JavaScript (ES2015) is used to create the SVGs, move the ball, paddles, calculate the players' score, trigger audio during game play, and declare the winner.
 

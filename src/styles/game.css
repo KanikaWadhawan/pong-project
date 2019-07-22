@@ -99,8 +99,13 @@ h1 {
   
     height: 100%;
     width: 100%;
-    background-image: url(/src/images/got1.jpg);
-    background-repeat: repeat;
+    background: 
+      
+    linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.2) 100%),
+    url(/src/images/got1.jpg)  repeat;
+    background-size: cover, cover;
+    /* background-image: url(/src/images/got1.jpg); */
+    /* background-repeat: repeat; */
     
     animation: gameWrapper 10s linear infinite;
   }

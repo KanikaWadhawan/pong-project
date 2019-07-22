@@ -2,7 +2,7 @@ import Paddle from './Paddle';
 import Score from './Score';
 import Board from './Board';
 import Ball from './Ball';
-//import Winner from './Winner';
+import Winner from './Winner';
 
 import pingSound1 from "../../public/sounds/game_of_thrones.mp3";
 import { SVG_NS, KEYS, PaddleOptions } from "../settings";
@@ -28,7 +28,7 @@ export default class Game {
     this.paddleHeight = 56;
     this.boardGap = 10;
    
-    //this.winner = new Message(90, 150, 40);
+    this.winner = new Winner(90, 150, 40);
     // adding sound in the background
     this.ping1 = new Audio(pingSound1);
     this.ping1.play();
@@ -137,11 +137,13 @@ export default class Game {
     // if(this.player1.score === 10 || this.player2.score === 10){
     //   this.pause = true;
     		// Declare Winner
-				var player1Msg = 'Player 1 Wins!';
-				var player2Msg = 'Player 2 Wins!';
+				const player1Msg = 'Player 1 Wins!';
+				const player2Msg = 'Player 2 Wins!';
 				if (this.player1.score === 10) {
+          this.pause = true;
 					this.winner.render(svg, player1Msg);
 				} else if (this.player2.score === 10) {
+          this.pause = true;
 					this.winner.render(svg, player2Msg);
 				}
        // document.location.reload();
