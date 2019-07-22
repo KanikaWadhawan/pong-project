@@ -28,19 +28,7 @@ export default class Paddle {
    );
 
       
-    //   document.addEventListener("keydown", event => {
-    //     switch (event.key) {
-    //         case up:
-    //           this.up();
-            
-    //           break;
-    //         case down:
-    //           this.down();
-    //           break;
-    //       }
-    //   });
-
-
+    
     }// end of constructor
     
      up(){

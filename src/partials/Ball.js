@@ -59,13 +59,14 @@ export default class Ball {
         // if true then there's a collision  
         this.vx *= -1;
         this.ping.play();
+        
+        player1.height = Math.max(player1.height -5, 15);
+        player2.height=Math.min(player2.height +10, 80);
        
-        player2.height += 10;
-        player1.height -= 5;
         // -- decreasing the height of the opponent
         let playerColour = player2.colour;
         player2.colour = 'pink';
-        setTimeout(function () { //
+        setTimeout(function () { 
           //---changing the colour
           player2.colour = playerColour // reset the color
         }, 200);
@@ -77,9 +78,10 @@ export default class Ball {
         (this.y >= player1.y && this.y <= player1.y + player1.height)
       ) {
         this.vx *= -1;
-        player1.height += 10;
-        player2.height -= 5;
-      
+
+        player2.height=Math.max(player2.height -5, 15);
+        player1.height=Math.min(player1.height +10, 80);
+        
         this.ping.play();
         let playerColour = player1.colour;
         player1.colour = 'orange';
