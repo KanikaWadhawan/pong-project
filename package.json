@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "An SVG Pong game.",
   "license": "ISC",
-  "author": "Kanika Wadhawan <wadhawan.kanika@gmailgit.com>",
+  "author": "Kanika Wadhawan <wadhawan.kanika@gmail.com>",
   "main": "src/index.js",
   "scripts": {
     "start": "parcel index.html -p 3000",
