@@ -103,6 +103,10 @@ export default class Ball {
 
     } if (player.score === 10) {
       alert("GAME OVER");
+      setTimeout(function(){
+        window.location.reload();
+      },3000)
+  
 
     }
 

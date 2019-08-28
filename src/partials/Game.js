@@ -31,9 +31,9 @@ export default class Game {
     this.winner = new Winner(90, 150, 40);
     // adding sound in the background
     this.ping1 = new Audio(pingSound1);
-    this.ping1.play();
+    // this.ping1.play();
     this.ping1.loop = true;
-
+    this.musicPlaying=false;
 
 
     this.megaBall = false;
@@ -64,6 +64,7 @@ export default class Game {
 
     // adding action listener for pause with the space bar
     document.addEventListener('keydown', (event) => {
+      this.playThemeMusic();
       switch (event.key) {
         case KEYS.spaceBar:
           this.pause = !this.pause;
@@ -95,6 +96,13 @@ export default class Game {
     }
   }
 
+  playThemeMusic(){
+
+    if(this.musicPlaying === false){
+      this.ping1.play();
+      this.musicPlaying = true;
+    }
+  };
 
   render() {
 
