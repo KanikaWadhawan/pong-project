@@ -18,7 +18,7 @@ export default class Game {
     this.board = new Board(this.width, this.height);
 
     this.ball = new Ball(8, this.width, this.height, '#ff0066');
-    //this.ball1 = new Ball(6, this.width, this.height, 'orange'); if you want to add a 2nd ball
+    
 
     this.score1 = new Score(this.width / 2 - 50, 30, 30);
 
@@ -136,7 +136,7 @@ export default class Game {
       this.pause = true;
       this.winner.render(svg, player2Msg);
     }
-     //document.location.reload();
+   
 
 
 

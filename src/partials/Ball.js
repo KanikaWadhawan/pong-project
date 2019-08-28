@@ -41,7 +41,7 @@ export default class Ball {
     
     } else if (hitTop || hitBottom) {
       this.vy = -this.vy;
-      // or  this.vy *= -1;
+     
     }
 
   }
