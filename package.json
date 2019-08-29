@@ -7,7 +7,7 @@
   "main": "src/index.js",
   "scripts": {
     "start": "parcel index.html -p 3000",
-    "predeploy": "rm -rf dist && parcel build index.html --public-url /pong-project",
+    "predeploy": "rm -rf dist && parcel build index.html --public-url /project_pong",
     "deploy": "gh-pages -d dist"
   },
   "devDependencies": {
